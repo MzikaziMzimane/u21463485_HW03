@@ -1,0 +1,160 @@
+﻿@model u21463485_HW03.Models.CombinedViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Library Records</h2>
+
+
+<div class=" container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3 style="text-align:center">Students</h3>
+
+            <!--Create button-->
+            <div class="col">
+                <a href="@Url.Action("Create", "students")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add Student</a>
+            </div>
+
+            <br />
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+                <tr class="table-row">
+                    <th class="table-bordered">Name</th>
+                    <th>Surname</th>
+                    <th>Birthdate</th>
+                    <th>Gender</th>
+                    <th>Class</th>
+                    <th>Point</th>
+                </tr>
+
+                @foreach (var student in Model.Students)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.birthdate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.@class)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.point)
+                        </td>
+
+                        <td class="text-end">
+                            <!-- Add text-end class here -->
+                            <a href="#" class="edit-link" data-url="@Url.Action("Edit", "Home", new { id = student.studentId })">Edit</a>
+                            <a href="#" class="details-link" data-url="@Url.Action("Details", "Home", new { id = student.studentId })">Details</a>
+                            <a href="#" class="delete-link" data-url="@Url.Action("Delete", "Home", new { id = student.studentId })">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipStudent; i++)
+                    {
+                        <a href="@Url.Action("Index", "Home", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", "Home", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-md-6">
+            <h3 style="text-align:center">Books</h3>
+
+            <div class="col">
+                <a href="@Url.Action("Create", "books")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add Book</a>
+            </div>
+
+            <br />
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+                <tr class="table-row">
+                    <th class="table-bordered">Name</th>
+                    <th>Name</th>
+                    <th>Number of Pages</th>
+                    <th>Point</th>
+                </tr>
+
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => book.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => book.pagecount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => book.point)
+                        </td>
+
+                        <td class="text-end">
+                            <!-- Add text-end class here -->
+                            <a href="#" class="edit-link" data-url="@Url.Action("Edit", "Home", new { id = book.bookId })">Edit</a>
+                            <a href="#" class="details-link" data-url="@Url.Action("Details", "Home", new { id = book.bookId })">Details</a>
+                            <a href="#" class="delete-link" data-url="@Url.Action("Delete", "Home", new { id = book.bookId })">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipBook; i++)
+                    {
+                        <a href="@Url.Action("Index", "Home", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", "Home", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

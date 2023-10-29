@@ -1,0 +1,156 @@
+﻿@model u21463485_HW03.Models.CombinedViewModel
+@{
+    ViewBag.Title = "Maintain";
+}
+
+<h2>Maintain</h2>
+
+
+<div class="conatiner">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h5>Authors</h5>
+
+            <div class="col">
+                <a href="@Url.Action("Create", "authors")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add author</a>
+            </div>
+
+            <br />
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+
+                <tr>
+                    <th class="table-bordered">Name</th>
+                    <th>Surname</th>
+                </tr>
+
+                @foreach (var author in Model.Authors)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => author.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => author.surname)
+                        </td>
+
+                        <td class="text-end">
+                            <!-- Add text-end class here -->
+                            <a href="#" class="edit-link" data-url="@Url.Action("Edit", "Home", new { id = author.authorId })">Edit</a>
+                            <a href="#" class="details-link" data-url="@Url.Action("Details", "Home", new { id = author.authorId })">Details</a>
+                            <a href="#" class="delete-link" data-url="@Url.Action("Delete", "Home", new { id = author.authorId })">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipAuthor; i++)
+                    {
+                        <a href="@Url.Action("Maintain", "Home", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Maintain", "Home", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h5>Book Types</h5>
+
+            <div class="col">
+                <a href="@Url.Action("Create", "types")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add type</a>
+            </div>
+
+            <br />
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+
+                <tr>
+                    <th class="table-bordered">Name</th>
+                    <th>Surname</th>
+                </tr>
+
+                @foreach (var type in Model.Types)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => type.name)
+                        </td>
+
+                        <td class="text-end">
+                            <!-- Add text-end class here -->
+                            <a href="#" class="edit-link" data-url="@Url.Action("Edit", "Home", new { id = type.typeId })">Edit</a>
+                            <a href="#" class="details-link" data-url="@Url.Action("Details", "Home", new { id = type.typeId })">Details</a>
+                            <a href="#" class="delete-link" data-url="@Url.Action("Delete", "Home", new { id = type.typeId })">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipType; i++)
+                    {
+                        <a href="@Url.Action("Maintain", "Home", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Maintain", "Home", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+

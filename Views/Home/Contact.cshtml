@@ -1,0 +1,138 @@
+﻿@model u21463485_HW03.Models.CombinedViewModel
+
+
+@{
+    ViewBag.Title = "MaintainView";
+}
+
+<div class="conatiner">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3>Authors</h3>
+
+            <div class="col">
+                <a href="@Url.Action("Create", "authors")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add author</a>
+            </div>
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+
+                <tr>
+                    <th class="table-bordered">Name</th>
+                    <th>Surname</th>
+                </tr>
+
+                @foreach (var student in Model.Authors)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.surname)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipAuthor; i++)
+                    {
+                        <a href="@Url.Action("MaintainView", "Maintain", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("MaintainView", "Mainatin", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h3>Book Types</h3>
+             
+            <div class="col">
+                <a href="@Url.Action("Create", "types")" class="btn btn-lg" style="border-radius: 20px; background-color:#27898b; color:white">Add type</a>
+            </div>
+
+            <table class="table-bordered" style="border: 1px solid black; padding:2px">
+
+                <tr>
+                    <th class="table-bordered">Name</th>
+                    <th>Surname</th>
+                </tr>
+
+                @foreach (var student in Model.Types)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => student.name)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+            <div>
+                <div>
+                    @for (var i = 1; i <= ViewBag.skipType; i++)
+                    {
+                        <a href="@Url.Action("MaintainView", "Maintain", new { skipPage = i })">@i</a>
+                    }
+                </div>
+
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("MaintainView", "Mainatin", new { skipPage = i })">@i</a>
+                        }
+                    }
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
